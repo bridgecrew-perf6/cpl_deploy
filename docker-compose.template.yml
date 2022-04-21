@@ -1,0 +1,25 @@
+version: "3.3"
+
+
+services:
+  user_service:
+    image: cebox616/copl_users:1.0
+    environment:
+      - MONGO_URL=
+    ports:
+      - 5000:5000
+  search_service:
+    image: cebox616/copl_search:1.0
+    environment:
+      - APIKEY=
+      - TIMESTAMP=
+      - HASH=
+    ports:
+      - 5001:5001
+  store_service:
+    image: cebox616/copl_store_comics:1.0
+    environment:
+      - MONGO_URL=
+      - API_GET_COMICS=
+    ports:
+      - 5002:5002

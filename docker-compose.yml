@@ -1,0 +1,25 @@
+version: "3.3"
+
+
+services:
+  user_service:
+    image: cebox616/copl_users:1.0
+    environment:
+      - MONGO_URL=mongodb+srv://cebox616:sexologop2p@clustercbx.cdiqu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+    ports:
+      - 5000:5000
+  search_service:
+    image: cebox616/copl_search:1.0
+    environment:
+      - APIKEY=e719cf4d617e595733c5187cce43c8f0
+      - TIMESTAMP=666666
+      - HASH=44547453c981a31f3fed408abd2693c8
+    ports:
+      - 5001:5001
+  store_service:
+    image: cebox616/copl_store_comics:1.0
+    environment:
+      - MONGO_URL=mongodb+srv://cebox616:sexologop2p@clustercbx.cdiqu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+      - API_GET_COMICS=http://192.168.0.111:5001
+    ports:
+      - 5002:5002
